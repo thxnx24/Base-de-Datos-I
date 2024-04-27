@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: https://sql.toad.cz/? -->
+<sql>
+<datatypes db="mysql">
+<group label="Numeric" color="rgb(238,238,170)">
+<type label="Integer" length="0" sql="INTEGER" quote=""/>
+<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+<type label="INT" length="0" sql="INT" quote=""/>
+<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+</group>
+
+<group label="Character" color="rgb(255,200,200)">
+<type label="Char" length="1" sql="CHAR" quote="'"/>
+<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+<type label="Binary" length="1" sql="BINARY" quote="'"/>
+<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+</group>
+
+<group label="Date &amp; Time" color="rgb(200,255,200)">
+<type label="Date" length="0" sql="DATE" quote="'"/>
+<type label="Time" length="0" sql="TIME" quote="'"/>
+<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+<type label="Year" length="0" sql="YEAR" quote=""/>
+<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+</group>
+
+<group label="Miscellaneous" color="rgb(200,200,255)">
+<type label="ENUM" length="1" sql="ENUM" quote=""/>
+<type label="SET" length="1" sql="SET" quote=""/>
+<type label="Bit" length="0" sql="bit" quote=""/>
+</group>
+</datatypes><table x="273" y="307" name="Departamento">
+<row name="Dep_ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Nombre_dep" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Edificio" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Presupuesto" null="1" autoincrement="0">
+<datatype>DOUBLE</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Dep_ID</part>
+</key>
+</table>
+<table x="628" y="449" name="Curso">
+<row name="Curso_ID_Curso" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Dep_ID_Departamento" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Departamento" row="Dep_ID" />
+</row>
+<row name="Nombre" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Créditos" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Curso_ID_Curso</part>
+</key>
+</table>
+<table x="762" y="242" name="Estudiante">
+<row name="Est_ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Prof_ID_Profesor" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Profesor" row="Prof_ID" />
+</row>
+<row name="Dep_ID_Departamento" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Departamento" row="Dep_ID" />
+</row>
+<row name="Nombre" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Primer_apell" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Segundo_apell" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Est_ID</part>
+</key>
+</table>
+<table x="536" y="63" name="Profesor">
+<row name="Prof_ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Dep_ID_Departamento" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Departamento" row="Dep_ID" />
+</row>
+<row name="Nombre" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Primer_apell" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Segundo_apell" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Fecha_nac" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Edad" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Prof_ID</part>
+</key>
+</table>
+<table x="1391" y="479" name="Seccion">
+<row name="Secc_ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Curso_ID_Curso" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Curso" row="Curso_ID_Curso" />
+</row>
+<row name="Numero_Clase" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Clase" row="Numero" />
+</row>
+<row name="Año " null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Semestre" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Secc_ID</part>
+<part>Curso_ID_Curso</part>
+</key>
+</table>
+<table x="1561" y="479" name="Horario">
+<row name="Horario_ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Hora_ini" null="1" autoincrement="0">
+<datatype>TIME</datatype>
+<default>NULL</default></row>
+<row name="Hora_fin" null="1" autoincrement="0">
+<datatype>TIME</datatype>
+<default>NULL</default></row>
+<row name="Día" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Horario_ID</part>
+</key>
+</table>
+<table x="1183" y="593" name="Clase">
+<row name="Numero" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Edificio" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Capacidad" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Numero</part>
+</key>
+</table>
+<table x="1044" y="156" name="Dicta">
+<row name="Prof_ID_Profesor" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Profesor" row="Prof_ID" />
+</row>
+<row name="Secc_ID_Seccion" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Seccion" row="Secc_ID" />
+</row>
+<row name="Secc_ID_Seccion" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Seccion" row="Secc_ID" />
+</row>
+<key type="PRIMARY" name="">
+<part>Prof_ID_Profesor</part>
+<part>Secc_ID_Seccion</part>
+<part>Secc_ID_Seccion</part>
+</key>
+</table>
+<table x="257" y="585" name="pre_reque">
+<row name="Curso_ID_Curso_Curso1" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Curso" row="Curso_ID_Curso" />
+</row>
+<row name="Curso_ID_Curso_Curso2" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Curso" row="Curso_ID_Curso" />
+</row>
+<key type="PRIMARY" name="">
+<part>Curso_ID_Curso_Curso1</part>
+<part>Curso_ID_Curso_Curso2</part>
+</key>
+</table>
+<table x="987" y="342" name="Matricula">
+<row name="Secc_ID_Seccion" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Seccion" row="Secc_ID" />
+</row>
+<row name="Est_ID_Estudiante" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Estudiante" row="Est_ID" />
+</row>
+<row name="Curso_ID_Curso_Seccion" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Seccion" row="Curso_ID_Curso" />
+</row>
+<row name="Nota" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>Secc_ID_Seccion</part>
+<part>Est_ID_Estudiante</part>
+<part>Curso_ID_Curso_Seccion</part>
+</key>
+</table>
+<table x="1490" y="323" name="Sec_hora">
+<row name="Secc_ID_Seccion" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Seccion" row="Secc_ID" />
+</row>
+<row name="Horario_ID_Horario" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Horario" row="Horario_ID" />
+</row>
+<key type="PRIMARY" name="">
+<part>Secc_ID_Seccion</part>
+<part>Horario_ID_Horario</part>
+</key>
+</table>
+<table x="990" y="47" name="Estudiante_telefono">
+<row name="Est_ID_Estudiante" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Estudiante" row="Est_ID" />
+</row>
+<row name="telefono" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>telefono</part>
+<part>Est_ID_Estudiante</part>
+</key>
+</table>
+</sql>
