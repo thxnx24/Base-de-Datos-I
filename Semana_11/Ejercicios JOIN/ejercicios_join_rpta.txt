@@ -1,0 +1,42 @@
+/*
+create table Person(name text, age int, gender text);
+create table Frequents(name text, pizzeria text);
+create table Eats(name text, pizza text);
+create table Serves(pizzeria text, pizza text, price decimal);
+*/
+
+
+/*a. Encuentra todas las pizzerías frecuentadas por al menos una persona menor de 18 años.*/
+SELECT f.pizzeria FROM Frequents f INNER JOIN Person p  ON  f.name = p.name WHERE p.age < 18;
+
+
+/*b. Encuentra los nombres de todas las mujeres que comen pizza de champiñones o de pepperoni (o ambas).*/
+SELECT e.name FROM Eats e INNER JOIN Person p ON e.name = p.name WHERE p.gender = 'female' AND (e.pizza = 'mushroom' OR e.pizza ='pepperoni');
+
+
+/*c. Encuentra los nombres de todas las mujeres que comen pizza de champiñones y pepperoni.*/
+SELECT p.name FROM Person p INNER JOIN Eats e1 ON p.name = e1.name INNER JOIN Eats e2 ON p.name = e2.name
+WHERE p.gender = 'female' AND (e1.pizza = 'mushroom' AND e2.pizza = 'pepperoni');
+
+
+/*d. Encuentra todas las pizzerías que sirven al menos una pizza que Amy come por menos de $10,00.*/
+SELECT s.pizzeria FROM Serves s JOIN Eats e ON s.pizza = e.pizza WHERE e.name = 'Amy' AND s.price < 10.00;
+
+
+/*e. Encuentre todas las pizzerías frecuentadas solo por mujeres o solo por hombres.*/
+-- Pizzerías frecuentadas solo por mujeres
+SELECT f.pizzeria FROM Frequents f INNER JOIN Person p ON f.name = p.name WHERE p.gender = 'female' AND f.pizzeria NOT IN (
+SELECT f2.pizzeria FROM Frequents f2 INNER JOIN Person p2 ON f2.name = p2.name WHERE p2.gender = 'male')
+
+UNION
+
+-- Pizzerías frecuentadas solo por hombres
+SELECT f.pizzeria FROM Frequents f INNER JOIN Person p ON f.name = p.name WHERE p.gender = 'male' AND f.pizzeria NOT IN (
+SELECT f2.pizzeria FROM Frequents f2 INNER JOIN Person p2 ON f2.name = p2.name WHERE p2.gender = 'female');
+
+
+/*f. Para cada persona, busque todas las pizzas que come y que no sean servidas en ninguna pizzería que frecuenta. 
+   Devuelve todos esos pares de persona (nombre)/pizza.*/
+SELECT e.name, e.pizza FROM Eats e
+LEFT JOIN ( SELECT f.name, s.pizza FROM Frequents f INNER JOIN Serves s ON f.pizzeria = s.pizzeria) 
+fs ON e.name = fs.name AND e.pizza = fs.pizza WHERE fs.name IS NULL;
