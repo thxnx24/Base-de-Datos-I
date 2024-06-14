@@ -41,10 +41,6 @@
 <row name="ID_Departamento" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="ID_Farmacia" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Farmacia" row="ID_Farmacia" />
-</row>
 <row name="Nombre_Departamento" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
@@ -323,7 +319,7 @@
 <part>ID_Doctor</part>
 </key>
 </table>
-<table x="1392" y="131" name="Proveedor">
+<table x="1352" y="60" name="Proveedor">
 <row name="ID_Proveedor" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -336,10 +332,6 @@
 <row name="Direccion_proveedor" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="ID_Farmacia" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Farmacia" row="ID_Farmacia" />
-</row>
 <key type="PRIMARY" name="">
 <part>ID_Proveedor</part>
 </key>
@@ -371,20 +363,6 @@
 <part>ID_Proveedor</part>
 </key>
 </table>
-<table x="904" y="53" name="Farmacia">
-<row name="ID_Farmacia" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="Nombre_farmacia" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="Dirección_farmacia" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>ID_Farmacia</part>
-</key>
-</table>
 <table x="1353" y="337" name="Horarios">
 <row name="ID_Horarios" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
@@ -402,14 +380,10 @@
 <part>ID_Horarios</part>
 </key>
 </table>
-<table x="1115" y="209" name="tiene">
+<table x="1039" y="166" name="tiene">
 <row name="ID_tiene" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="ID_Farmacia_Farmacia" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Farmacia" row="ID_Farmacia" />
-</row>
 <row name="ID_Horarios_Horarios" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Horarios" row="ID_Horarios" />

@@ -1,0 +1,22 @@
+-- Consultas con GROUP BY
+
+--Contar cuantas personas frecuentan cada pizzeria
+SELECT pizzeria, COUNT(name) AS numero_de_frecuentadores FROM Frequents GROUP BY pizzeria;
+
+--Contar cuantas personas comen cada tipo de pizza
+SELECT pizza, COUNT(name) AS numero_de_comensales FROM Eats GROUP BY pizza;
+
+--Calcular la edad promedio de las personas que frecuentan cada pizzeria
+SELECT Frequents.pizzeria, AVG(Person.age) AS edad_promedio FROM Frequents JOIN Person ON Frequents.name = Person.name GROUP BY Frequents.pizzeria
+
+
+
+
+
+-- Consultas con HAVING
+
+-- Encontrar pizzas que son comidas por mas de 3 personas
+SELECT pizza, COUNT(name) AS numero_de_comensales FROM Eats GROUP BY pizza HAVING COUNT (name) > 3;
+
+--Encontrar las pizzerias mas frecuentadas por mas de 5 personas
+SELECT pizzeria, COUNT(name) AS numero_de_frecuentadores  FROM Frequents GROUP BY pizzeria HAVING COUNT(name) > 5;
